@@ -46,4 +46,14 @@ public class SurveyResource {
 		return survey.getQuestions();
 	}
 	
+	@RequestMapping("/surveys/{id}/questions/{questionId}")
+	public Question retrieveQuestionsByQuestionId(@PathVariable String id, @PathVariable String questionId){
+		Question question = surveyService.retrieveSurveyByQuestionId(id, questionId);
+		
+		if(question==null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		
+		return question;
+	}
 }
