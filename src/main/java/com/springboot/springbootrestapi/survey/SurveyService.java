@@ -3,6 +3,7 @@ package com.springboot.springbootrestapi.survey;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,15 @@ public class SurveyService {
 
 	public List<Survey> retrieveAllSurveys() {
 		return surveys;
+	}
+
+	public Survey retrieveSurveyById(String id) {
+		Optional<Survey> optionalsurvey = surveys.stream().filter(survey -> survey.getId().equalsIgnoreCase(id)).findFirst();
+		
+		if(optionalsurvey.isEmpty())
+			return null;
+		
+		return optionalsurvey.get();
 	}
 
 }
