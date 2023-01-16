@@ -41,6 +41,10 @@ public class Question {
 		return "Question [id=" + id + ", description=" + description + ", options=" + options + ", correctAnswer="
 				+ correctAnswer + "]";
 	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	
 	
 }
